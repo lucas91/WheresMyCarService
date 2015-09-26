@@ -11,7 +11,7 @@ import java.net.URL;
     public class ClienteWS {
 
         public static void main ( String [] args ) {
-           String s = "http://smartparking.somee.com/wcf/MobileService.svc/json/ListarAndares";
+           String s = "http://www.smartparking.somee.com/wcf/SensorService.svc/json/ListarVagasParaSinalizar";
 
             try {
                 BufferedReader br;
@@ -34,14 +34,14 @@ import java.net.URL;
 
                     Gson gson = new Gson();
 
-                    AndaresDTO[] produto1 = gson.fromJson(br, AndaresDTO[].class);
+                    VagasDTO[] produto1 = gson.fromJson(br, VagasDTO[].class);
 
-                    for (AndaresDTO andaresDTO : produto1) {
+                    for (VagasDTO vagasDTO : produto1) {
 						
-                    	System.out.println("ID: " + andaresDTO.getId());
-                    	System.out.println("Nome: " + andaresDTO.getNome());
-                    	System.out.println("Vagas Livres: " + andaresDTO.getQtdLivre() );
-                    	System.out.println("Vagas Totais: " + andaresDTO.getQtdVagas());
+                    	System.out.println("Deficiente: " + vagasDTO.getVagaDeficiente());
+                    	System.out.println("Endereço do Sensor: " + vagasDTO.getId());
+                    	System.out.println("Id do Carro: " + vagasDTO.getIdOcupante());
+                    	System.out.println("Situação: " + vagasDTO.getSituacao());
                     	System.out.println("                                            ");
 					}
 
